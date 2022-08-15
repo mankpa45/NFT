@@ -26,7 +26,7 @@ contract CryptoDevs is ERC721Enumerable, Ownable {
      //total number of tokenIds minted
      uint256 public tokenIds;
     //whitelist contract instance
-    IWhitelist whitelist;
+    IWhitelist Whitelist;
     //track presale start or not
     bool public presaleStarted;
 
@@ -45,9 +45,7 @@ contract CryptoDevs is ERC721Enumerable, Ownable {
        * Constructor for Crypto Devs takes in the baseURI to set _baseTokenURI for the collection.
        * It also initializes an instance of whitelist interface*/
     
- constructor (string memory baseURI, address whitelistContract) ERC721("Crypto Devs", "CD") {
-          _baseTokenURI = baseURI;
-          whitelist = IWhitelist(whitelistContract);
+ constructor (string memory baseURI, address WhitelistContract) ERC721("Crypto Devs", "CD") { 
       }
 
       function startpresale () public onlyOwner{
@@ -59,7 +57,7 @@ contract CryptoDevs is ERC721Enumerable, Ownable {
 
        function presaleMint() public payable onlyWhenNotPaused {
           require(presaleStarted && block.timestamp < presaleEnded, "Presale is not running");
-          require(whitelist.whiteListedAddresses(msg.sender), "You are not whitelisted");
+          require(Whitelist.whiteListedAddresses(msg.sender), "You are not whitelisted");
           require(tokenIds < maxTokenIds, "Exceeded maximum Crypto Devs supply");
           require(msg.value >= _price, "Ether sent is not correct");
           tokenIds += 1;
