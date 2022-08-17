@@ -30,13 +30,13 @@ export default function Home() {
       const signer = await getProviderOrSigner(true);
       // Create a new instance of the Contract with a Signer, which allows
       // update methods
-      const WhitelistContract = new Contract(
+      const whitelistContract = new Contract(
         NFT_CONTRACT_ADDRESS,
         abi,
         signer
       );
       // call the presaleMint from the contract, only whitelisted addresses would be able to mint
-      const tx = await WhitelistContract.presaleMint({
+      const tx = await whitelistContract.presaleMint({
         // value signifies the cost of one crypto dev which is "0.01" eth.
         // We are parsing `0.01` string to ether using the utils library from ethers.js
         value: utils.parseEther("0.01"),
@@ -60,13 +60,13 @@ export default function Home() {
       const signer = await getProviderOrSigner(true);
       // Create a new instance of the Contract with a Signer, which allows
       // update methods
-      const WhitelistContract = new Contract(
+      const whitelistContract = new Contract(
         NFT_CONTRACT_ADDRESS,
         abi,
         signer
       );
       // call the mint from the contract to mint the Crypto Dev
-      const tx = await WhitelistContract.mint({
+      const tx = await whitelistContract.mint({
         // value signifies the cost of one crypto dev which is "0.01" eth.
         // We are parsing `0.01` string to ether using the utils library from ethers.js
         value: utils.parseEther("0.01"),
@@ -104,13 +104,13 @@ export default function Home() {
       const signer = await getProviderOrSigner(true);
       // Create a new instance of the Contract with a Signer, which allows
       // update methods
-      const WhitelistContract = new Contract(
+      const whitelistContract = new Contract(
         NFT_CONTRACT_ADDRESS,
         abi,
         signer
       );
       // call the startPresale from the contract
-      const tx = await WhitelistContract.startPresale();
+      const tx = await whitelistContract.startPresale();
       setLoading(true);
       // wait for the transaction to get mined
       await tx.wait();
