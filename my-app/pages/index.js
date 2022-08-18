@@ -110,7 +110,7 @@ export default function Home() {
         signer
       );
       // call the startPresale from the contract
-      const tx = await whitelistContract.startPresale();
+      const tx = await whitelistContract.startpresale();
       setLoading(true);
       // wait for the transaction to get mined
       await tx.wait();
@@ -317,7 +317,7 @@ export default function Home() {
     // If connected user is the owner, and presale hasnt started yet, allow them to start the presale
     if (isOwner && !presaleStarted) {
       return (
-        <button className={styles.button} onClick={startPresale}>
+        <button className={styles.button} onClick={startpresale}>
           Start Presale!
         </button>
       );
