@@ -98,7 +98,7 @@ export default function Home() {
   /**
    * startPresale: starts the presale for the NFT Collection
    */
-  const startPresale = async () => {
+  const startpresale = async () => {
     try {
       // We need a Signer here since this is a 'write' transaction.
       const signer = await getProviderOrSigner(true);
